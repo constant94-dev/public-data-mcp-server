@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant User as 사용자 (웹 브라우저)
+    participant View as Vue.js + TypeScript (View)
+    participant Server as Spring Boot MCP 서버
+    participant PublicAPI as 공공 API (외부)
+    participant LLM as 대형언어모델 (외부)
+
+    User->>View: 대화 입력 및 요청 시작
+    View->>Server: POST /api/session (새 세션 생성 요청)
+    Server-->>View: { sessionId } 반환
+
+    User->>View: 대화 메시지 입력
+    View->>Server: POST /api/session/{sessionId}/request (MCP 요청 전송)
+    Server->>PublicAPI: 공공 API 호출 (필요 시)
+    PublicAPI-->>Server: JSON 응답 반환
+    Server->>LLM: LLM 응답 가공 요청
+    LLM-->>Server: LLM 응답 반환
+    Server-->>View: MCP 응답 전송 (JSON-RPC or REST)
+
+    View-->>User: UI에 응답 표시
+
+    alt 세션 상태 갱신 필요 시
+        View->>Server: PUT /api/session/{sessionId}/context (컨텍스트 갱신)
+        Server-->>View: 성공 여부 응답
+    end
+
+    alt 세션 종료 시
+        View->>Server: DELETE /api/session/{sessionId} (세션 종료)
+        Server-->>View: 성공 여부 응답
+    end
