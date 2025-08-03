@@ -1,0 +1,53 @@
+# Cursor AI 프로젝트 컨텍스트 가이드
+
+## 프로젝트 개요
+이 프로젝트는 MCP (Model Context Protocol) Tools 활용해 공공데이터 API 호출 작업을 위한 시스템입니다.
+
+## 기술 스택
+- Java 21+ (LTS 버전)
+- Spring Boot 3.x
+- Gradle (빌드 도구)
+- Docker (컨테이너 관리)
+- MCP (Model Context Protocol)
+- 공공데이터 API
+- JUnit 5 (테스트)
+- Lombok (보일러플레이트 코드 감소)
+
+## 코딩 스타일
+- Java: Oracle Java Code Conventions 준수
+- 파일명: PascalCase 사용 (클래스명과 동일)
+- 메서드명: camelCase 사용
+- 변수명: camelCase 사용
+- 상수명: UPPER_SNAKE_CASE 사용
+- 패키지명: 소문자 사용
+- 클래스명: PascalCase 사용
+- 주석: 한국어로 상세히 작성
+- 들여쓰기: 4칸 공백 사용
+- 중괄호: K&R 스타일 (열린 중괄호는 같은 줄)
+
+## 프로젝트 구조
+```
+vscode-repo/
+|-- mcp-public-data/       # MCP 관련 문서 및 코드
+    |-- .cursorrules             # cursor AI 규칙 정의
+    |-- context.md               # 현재 상황 문서화
+    |-- conversation-management-guide.md # 대화 관리 가이드 문서
+```
+
+## 주요 작업 영역
+1. MCP Tools GitHub 연동
+2. Spring Boot 프로젝트 개발
+
+## AI에게 요청할 때
+- 구체적인 요구사항 명시
+- 현재 상황과 목표 설명
+- 기존 코드 참조 시 파일명 명시
+- 에러 발생 시 전체 에러 메시지 제공
+
+## 주의사항
+- 민감한 정보 (토큰, 키 등)는 환경변수 또는 Spring Cloud Config 사용
+- Java 버전 호환성 확인 (Java 17+ 권장)
+- Spring Boot 자동 설정 활용
+- 예외 처리 및 로깅 철저히 구현
+- 단위 테스트 및 통합 테스트 작성
+- API 문서화 (Swagger/OpenAPI) 필수 
