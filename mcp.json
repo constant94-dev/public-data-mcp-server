@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "docker",
+      "args": [
+        "exec",
+        "-i",
+        "node24bg",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@smithery-ai/github",
+        "--key",
+        "1228f3e0-1006-49da-8703-5e39295b6499",
+        "--profile",
+        "democratic-wallaby-XFhSUZ"
+      ]
+    }
+  }
+}

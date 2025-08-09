@@ -2,25 +2,35 @@
 # 프로젝트 컨텍스트 가이드
 
 ## 🎯 현재 작업 상황
+- MCP Github 연동 완료
+- MCP Java SDK 사용해 간단한 요청과 응답하는 서버 구현 중...
 
 ### 진행 중인 작업
-- **MCP Tools GitHub 연동**: Docker 컨테이너를 통한 GitHub MCP 서버 실행
-- 
+- MCP Java SDK 사용해 간단한 요청과 응답하는 서버 구현
 
 ### 최근 완료된 작업
 - MCP Tools Github 연동됨
 - MCP Tools Github Issue 첫 생성 및 댓글 추가 함
+- 서로 다른 OS 환경에 Docker 컨테이너를 통한 GitHub MCP 서버 실행
 
 ### 현재 이슈
 
 
 ## 🔧 기술적 컨텍스트
 
-### 환경 정보
-- **OS**: Windows 10 (10.0.26100)
+### 환경 정보 (Desktop)
+- **OS**: Windows 11
 - **Shell**: PowerShell
 - **IDE**: Cursor
-- **작업 디렉토리**: `D:\vscode-repo`
+- **Server**: Docker (node v1.2.3)
+- **작업 폴더**: `D:\vscode-repo`
+
+### 환경 정보 (NoteBook)
+- **OS**: Mac OS Sequoia (v15.6)
+- **Shell**: iTerm2
+- **IDE**: Cursor
+- **Server**: Docker (node v1.2.3)
+- **작업 폴더**: `/Users/ethan/Cursor`
 
 ### 사용 중인 도구
 - **Docker**: Node Server Docker Desktop Container 사용
@@ -29,7 +39,7 @@
 ### 설정된 환경변수
 - 설정된 환경변수 없음....
 
-## 📁 파일 구조
+## 📁 파일 구조 (Windows)
 
 ```
 D:\vscode-repo\
@@ -45,6 +55,7 @@ D:\vscode-repo\
 ## 🎯 다음 단계
 
 ### 우선순위 1: MCP GitHub 연동 안정화
+### 우선순위 2: MCP Java SDK 사용
 
 ## 💡 AI 협업 팁
 
@@ -61,4 +72,4 @@ D:\vscode-repo\
 ## 🔄 컨텍스트 업데이트
 
 이 문서는 프로젝트 진행 상황에 따라 지속적으로 업데이트됩니다.
-마지막 업데이트: 2025-08-03 
+마지막 업데이트: 2025-08-09
