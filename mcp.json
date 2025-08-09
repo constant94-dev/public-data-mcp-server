@@ -1,20 +1,10 @@
 {
   "mcpServers": {
     "github": {
-      "command": "docker",
+      "command": "sh",
       "args": [
-        "exec",
-        "-i",
-        "node24bg",
-        "npx",
-        "-y",
-        "@smithery/cli@latest",
-        "run",
-        "@smithery-ai/github",
-        "--key",
-        "1228f3e0-1006-49da-8703-5e39295b6499",
-        "--profile",
-        "democratic-wallaby-XFhSUZ"
+        "-lc",
+        "set -a; [ -f ./env/.secrets.env ] && . ./env/.secrets.env; set +a; docker exec -i -e GITHUB_MCP_KEY -e GITHUB_MCP_PROFILE node24bg npx -y @smithery/cli@latest run @smithery-ai/github --key \"$GITHUB_MCP_KEY\" --profile \"$GITHUB_MCP_PROFILE\""
       ]
     }
   }

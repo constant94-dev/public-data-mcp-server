@@ -34,3 +34,13 @@
 ### [전체 Sequence]
 
 ![이미지설명](https://github.com/constant94-dev/mcp-public-data/blob/main/post/sequence-diagram.png)
+
+### 환경 변수 설정 (Secrets 분리)
+`env/.env-local` 파일에 아래 값을 정의해 민감정보를 관리합니다. 이 파일은 `.gitignore`에 의해 커밋되지 않습니다. 예시는 `env/.env-local.example`를 참고하세요.
+
+```bash
+GITHUB_MCP_KEY="<your-smithery-key>"
+GITHUB_MCP_PROFILE="<your-smithery-profile>"
+```
+
+Docker 컨테이너(`node24bg`)에서 사용하려면 컨테이너에 동일한 환경 변수가 전달되어야 합니다. 필요 시 컨테이너 실행 시 `--env-file` 혹은 `-e`로 값을 주입하세요.

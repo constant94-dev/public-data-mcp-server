@@ -177,3 +177,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,intellij
+
+# --- Custom ignores (MCP) ---
+# Do not commit real secrets
+env/.secrets.env
