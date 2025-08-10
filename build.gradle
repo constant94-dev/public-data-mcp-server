@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.datapublic'
+version = '1.0.0'
+sourceCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 공식 MCP Java SDK
+    implementation 'io.modelcontextprotocol.sdk:mcp:0.11.1'
+    
+    // JSON 처리
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    
+    // 로깅
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'ch.qos.logback:logback-classic:1.4.11'
+    
+    // 테스트
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClass = 'com.datapublic.mcp.PublicDataMCPServer'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.datapublic.mcp.PublicDataMCPServer'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
