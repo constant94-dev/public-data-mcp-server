@@ -183,3 +183,4 @@ $RECYCLE.BIN/
 env/.secrets.env
 /build
 .gradle
+*.iml

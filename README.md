@@ -3,8 +3,8 @@
 ### ✅ 성공적으로 구현된 기능
 - **Hello World 도구**: 사용자 이름을 받아서 인사 메시지를 반환
 - **MCP 프로토콜 지원**: Model Context Protocol 표준 준수
-- **Java 21**: 최신 Java 기능 활용
-- **Gradle 빌드**: 현대적인 빌드 도구
+- **Java 21**: Java 기능 활용
+- **Gradle 빌드**: 빌드 도구
 - **STDIO 통신**: 표준 입출력을 통한 MCP 프로토콜 통신
 
 ### 💻 기술스택
@@ -27,11 +27,10 @@
 
 #### _[전체 Sequence]_
 
-![이미지설명](https://github.com/constant94-dev/mcp-public-data/blob/main/post/sequence-diagram.png)
+![프로젝트다이어그램](https://github.com/constant94-dev/mcp-public-data/blob/main/post/sequence-diagram.png)
 
 #### _환경 변수 설정 (Secrets 분리)_
-`./env/.secrets.env` 파일에 아래 값을 정의 민감한 데이터를 관리합니다. 이 파일은 `.gitignore`에 의해 커밋되지 않습니다. 예시는 `./env/.secrets.env.
-example`를 참고
+`./env/.secrets.env` 파일에 아래 값을 정의 민감한 데이터를 관리합니다. 이 파일은 `.gitignore`에 의해 커밋되지 않습니다. 예시는 `./env/.secrets.env.example`를 참고
 
 Docker 컨테이너(`node24bg`)에서 사용하려면 컨테이너에 동일한 환경 변수가 전달되어야 합니다. 필요 시 컨테이너 실행 시 `--env-file` 혹은 `-e`로 값을 주입하세요.
 
@@ -48,14 +47,24 @@ GITHUB_MCP_PROFILE="<your-smithery-profile>"
 ```gradle
 dependencies {
     // 공식 MCP Java SDK
-    implementation 'io.modelcontextprotocol.sdk:mcp:0.11.1'
+    implementation platform("io.modelcontextprotocol.sdk:mcp-bom:0.11.1")
+    implementation 'io.modelcontextprotocol.sdk:mcp'
     
     // JSON 처리
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
     
     // 로깅
-    implementation 'org.slf4j:slf4j-api:2.0.9'
-    implementation 'ch.qos.logback:logback-classic:1.4.11'
+    implementation 'org.slf4j:slf4j-api:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    // 테스트
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 }
 ```
 
@@ -311,9 +320,9 @@ private static SyncToolSpecification getMyNewToolSpecification() {
 
 ### 📚 참고 자료
 
-- [공식 MCP Java SDK](https://github.com/modelcontextprotocol/java-sdk)
+- [공식 문서 MCP Java SDK](https://modelcontextprotocol.io/sdk/java/mcp-overview)
+- [공식 MCP GitHub Java SDK](https://github.com/modelcontextprotocol/java-sdk)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
-- [MCP Java SDK 문서](https://modelcontextprotocol.io/sdk/java/mcp-overview)
 - [Gradle 공식 문서](https://gradle.org/docs/)
 
 ### 🤝 기여

@@ -13,15 +13,22 @@ repositories {
 
 dependencies {
     // 공식 MCP Java SDK
-    implementation 'io.modelcontextprotocol.sdk:mcp:0.11.1'
+    implementation platform("io.modelcontextprotocol.sdk:mcp-bom:0.11.1")
+    implementation 'io.modelcontextprotocol.sdk:mcp'
     
     // JSON 처리
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
     
     // 로깅
-    implementation 'org.slf4j:slf4j-api:2.0.9'
-    implementation 'ch.qos.logback:logback-classic:1.4.11'
-    
+    implementation 'org.slf4j:slf4j-api:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+
     // 테스트
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 }
