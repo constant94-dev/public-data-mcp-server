@@ -355,6 +355,11 @@ private static SyncToolSpecification getMyNewToolSpecification() {
 }
 ```
 
+### 🔭 포트폴리오 URL
+
+- [MCP 서버 만들기 포트폴리오](https://gamma.app/docs/API-MCP--9a286xt08t7w8is)
+
+
 ### 📚 참고 자료
 
 - [공식 문서 MCP Java SDK](https://modelcontextprotocol.io/sdk/java/mcp-overview)
