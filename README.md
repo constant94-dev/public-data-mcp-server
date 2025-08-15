@@ -25,9 +25,13 @@
 
 ### 📋 요구사항
 
-#### _[전체 Sequence]_
+#### _[요청 & 응답 다이어그램]_
 
-![프로젝트다이어그램](https://github.com/constant94-dev/mcp-public-data/blob/main/post/sequence-diagram.png)
+![request-response-Diagram](https://github.com/constant94-dev/mcp-public-data/blob/main/post/request-response-sequence.png)
+
+#### _[아키텍처(컴포넌트) 다이어그램]_
+
+![request-response-Diagram](https://github.com/constant94-dev/mcp-public-data/blob/main/post/arch-component-flowchart.png)
 
 #### _환경 변수 설정 (Secrets 분리)_
 `./env/.secrets.env` 파일에 아래 값을 정의 민감한 데이터를 관리합니다. 이 파일은 `.gitignore`에 의해 커밋되지 않습니다. 예시는 `./env/.secrets.env.example`를 참고

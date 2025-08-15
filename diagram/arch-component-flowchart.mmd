@@ -1,0 +1,44 @@
+flowchart LR
+    %% Client ~ MCP ~ Spring Boot ~ Public Data Portal
+
+    subgraph Client["MCP Host / Client"]
+        C1[Agent UI]
+    end
+
+    subgraph MCP["MCP Java SDK Server - PublicDataMCPServer"]
+        M1[Controller - STDIO Transport]
+        M2[Service Layer - Tool Handlers]
+        M3[(Tool Registry)]
+    end
+
+    subgraph SB["Spring Boot Multi-module Server"]
+        direction TB
+        A1[api module - REST Controller]
+        A2[application module - Use Cases]
+        A3[domain module - Entities and Rules]
+        A4[infra module - WebClient or Feign, Cache, Security, Logging]
+    end
+
+    subgraph PDP["Public Data Portal"]
+        P1[OpenAPI Endpoint - REST JSON or XML]
+    end
+
+    %% Links
+    C1 <-->|STDIO JSON-RPC MCP| M1
+    M1 --> M3
+    M3 --> M2
+    M2 -- REST HTTP JSON --> A1
+    A1 --> A2 --> A3
+    A2 --> A4
+    A4 -- REST HTTP --> P1
+    P1 -- response raw --> A4 --> A2
+    A2 -- response DTO --> A1
+    A1 -- processed JSON --> M2
+    M2 --> M1
+    M1 -->|STDIO response| C1
+
+    %% Extras
+    REDIS[(Redis Cache)]
+    SEC[Auth and Key Management]
+    A4 --- REDIS
+    A4 --- SEC
