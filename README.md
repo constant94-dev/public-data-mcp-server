@@ -280,17 +280,50 @@ echo '{"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": {"name": "he
 
 ```
 mcp-public-data/
-├── src/
-│   └── main/
-│       └── java/
-│           └── com/
-│               └── datapublic/
-│                   └── mcp/
-│                       └── PublicDataMCPServer.java
-├── build.gradle
-├── gradle.properties
-├── settings.gradle
-└── README.md
++---📦architecture
+┃    ┗ 📜mcp_project_structure.md
+┃
++---📦diagram
+┃    ┣ 📜arch-component-flowchart.mmd
+┃    ┗ 📜request-response-sequence.mmd
+┃
++---📦env
+┃    ┗ 📜.secrets.env.example
+┃
++---📦post
+┃    ┣ 📜arch-component-flowchart.png
+┃    ┣ 📜modelcontextprotocol.svg
+┃    ┗ 📜request-response-sequence.png
+┃
++---📦required
+┃    ┣ 📜mcp_requirements_with_rationale.md
+┃    ┗ 📜mcp_server_execution_plan.md
+┃
++---📦src
+┃    ┗ 📂main
+┃    ┃ ┗ 📂java
+┃    ┃ ┃ ┗ 📂com
+┃    ┃ ┃ ┃ ┗ 📂datapublic
+┃    ┃ ┃ ┃ ┃ ┗ 📂mcp
+┃    ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+┃    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MCPServerController.java
+┃    ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+┃    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HelloService.java
+┃    ┃ ┃ ┃ ┃ ┃ ┗ 📜PublicDataMCPServer.java
+┃   .cursorrules
+┃   .gitignore
+┃   build.gradle
+┃   conversation-management-guide.md
+┃   cursor-context.md
+┃   gradle.properties
+┃   gradlew
+┃   gradlew.bat
+┃   mcp-public-data.iml
+┃   mcp.json
+┃   README.md
+┃   run-build-gradle.sh
+┃   run-github-mcp.sh
+\   settings.gradle
 ```
 
 ### 🧰 새로운 도구 추가
