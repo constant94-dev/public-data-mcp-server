@@ -130,8 +130,8 @@ private static SyncToolSpecification getMyNewToolSpecification() {
 
 ## 🔗 관련 프로젝트
 
-- **[spring-boot-mcp-integration](../spring-boot-mcp-integration/)**: Spring Boot 통합 서버
-- **[vue-mcp-integration](../vue-mcp-integration/)**: Vue.js 프론트엔드 클라이언트
+- **[spring-boot-mcp-integration](https://github.com/constant94-dev/spring-boot-mcp-integration)**: Spring Boot 통합 서버
+- **[vue-mcp-integration](https://github.com/constant94-dev/vue-mcp-integration)**: Vue.js 프론트엔드 클라이언트
 
 ## 📚 참고 자료
 
