@@ -1,7 +1,0 @@
-{
-  "mcpServers": {
-    "github": {
-      "command": "/Users/ethan/Cursor/mcp-public-data/run-github-mcp.sh"
-    }
-  }
-}

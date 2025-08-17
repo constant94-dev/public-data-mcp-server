@@ -1,5 +1,10 @@
 ## 공공데이터포털 API를 사용해 MCP Server를 만들고 있습니다.
 
+### ⚙️ 전역 설정 참조
+이 프로젝트는 워크스페이스 루트의 전역 설정을 사용합니다:
+- **전역 Cursor AI 규칙**: `/Users/ethan/Cursor/.cursorrules`
+- **전역 MCP 설정**: `/Users/ethan/Cursor/mcp.json`
+
 ### ✅ 성공적으로 구현된 기능
 - **Hello World 도구**: 사용자 이름을 받아서 인사 메시지를 반환
 - **MCP 프로토콜 지원**: Model Context Protocol 표준 준수
@@ -310,7 +315,6 @@ mcp-public-data/
 ┃    ┃ ┃ ┃ ┃ ┃ ┣ 📂service
 ┃    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HelloService.java
 ┃    ┃ ┃ ┃ ┃ ┃ ┗ 📜PublicDataMCPServer.java
-┃   .cursorrules
 ┃   .gitignore
 ┃   build.gradle
 ┃   conversation-management-guide.md
@@ -319,7 +323,6 @@ mcp-public-data/
 ┃   gradlew
 ┃   gradlew.bat
 ┃   mcp-public-data.iml
-┃   mcp.json
 ┃   README.md
 ┃   run-build-gradle.sh
 ┃   run-github-mcp.sh

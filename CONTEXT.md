@@ -7,6 +7,11 @@
 **목표**: MCP(Model Context Protocol) Java SDK를 사용한 "Hello World" 응답 서버 구성  
 **최종 커밋**: `[MCP/250810] mcp java sdk 서버 1차 구성`
 
+## ⚙️ 전역 설정 참조
+이 프로젝트는 워크스페이스 루트의 전역 설정을 사용합니다:
+- **전역 Cursor AI 규칙**: `/Users/ethan/Cursor/.cursorrules`
+- **전역 MCP 설정**: `/Users/ethan/Cursor/mcp.json`
+
 ## 🛠️ 기술 스택
 
 - **Java**: 21 (SDKMAN으로 관리)
@@ -28,7 +33,7 @@ mcp-public-data/
 ├── run-build-gradle.sh         # 빌드 및 실행 스크립트
 ├── run-github-mcp.sh           # GitHub MCP 실행 스크립트
 ├── README.md                   # 프로젝트 문서
-├── mcp.json                    # MCP 설정 파일
+├── CONTEXT.md                  # 프로젝트 컨텍스트 문서
 └── env/                        # 환경 변수 디렉토리
     ├── .secrets.env           # GitHub MCP API 키 (실제 값)
     └── .secrets.env.example   # GitHub MCP API 키 템플릿
