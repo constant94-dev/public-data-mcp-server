@@ -1,0 +1,35 @@
+flowchart LR
+    %% MCP Client ~ Public Data MCP Server ~ Public Data Portal
+
+    subgraph Client["MCP 호환 클라이언트<br/>(예: Cursor, Claude)"]
+        C1[AI 도구 UI]
+    end
+
+    subgraph MCP["Public Data MCP Server"]
+        M1[PublicDataMCPServer<br/>STDIO Transport]
+        M2[MCPServerController<br/>도구 관리]
+        M3[HelloService<br/>도구 구현]
+    end
+
+    subgraph PDP["공공데이터포털 API"]
+        P1[REST API 엔드포인트<br/>JSON/XML 응답]
+    end
+
+    %% 현재 구현된 연결
+    C1 <-->|STDIO JSON-RPC MCP| M1
+    M1 --> M2
+    M2 --> M3
+    M3 -->|Hello World 응답| M2
+    M2 --> M1
+    M1 -->|STDIO 응답| C1
+
+    %% 향후 구현 예정 연결
+    M3 -.->|향후: HTTP REST| PDP
+    PDP -.->|향후: JSON 응답| M3
+
+    %% 스타일
+    classDef current fill:#90EE90,stroke:#333,stroke-width:2px
+    classDef future fill:#FFE4B5,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5
+    
+    class M1,M2,M3 current
+    class PDP future

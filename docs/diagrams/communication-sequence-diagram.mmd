@@ -1,0 +1,25 @@
+sequenceDiagram
+    autonumber
+    participant Client as MCP 호환 클라이언트<br/>(예: Cursor, Claude)
+    participant MCP as Public Data MCP Server<br/>(PublicDataMCPServer)
+    participant Controller as MCPServerController
+    participant Service as HelloService
+
+    Note over Client,Service: 현재 구현된 Hello World 도구 호출
+    Client->>MCP: JSON-RPC STDIO 요청<br/>{ "method": "tools/call",<br/> "params": { "name": "hello_world", "arguments": {"name": "사용자"} } }
+    MCP->>Controller: 도구 호출 요청 전달
+    Controller->>Service: Hello World 도구 실행
+    Service->>Service: 메시지 생성<br/>"안녕하세요, 사용자! Java 21과 Gradle로 만든 Public Data MCP 서버입니다! 🎉"
+    Service-->>Controller: 도구 실행 결과 반환
+    Controller-->>MCP: MCP 응답 형식으로 변환
+    MCP-->>Client: MCP Tool 결과 응답<br/>{ "jsonrpc": "2.0", "id": 2, "result": { "content": [{ "type": "text", "text": "..." }] } }
+
+    Note over Client,Service: 향후 구현 예정: 공공데이터 API 연동
+    Note over Client,Service: Client->>MCP: 공공데이터 검색 요청
+    Note over Client,Service: MCP->>Controller: 공공데이터 도구 호출
+    Note over Client,Service: Controller->>Service: PublicDataService 실행
+    Note over Client,Service: Service->>API: 공공데이터포털 API 호출
+    Note over Client,Service: API-->>Service: JSON 응답
+    Note over Client,Service: Service-->>Controller: 가공된 데이터 반환
+    Note over Client,Service: Controller-->>MCP: MCP 응답 형식으로 변환
+    Note over Client,Service: MCP-->>Client: 공공데이터 결과 응답

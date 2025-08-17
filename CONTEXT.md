@@ -1,351 +1,208 @@
-# MCP Java SDK 서버 구성 작업 컨텍스트
+# Public Data MCP Server - 프로젝트 컨텍스트
 
 ## 📋 프로젝트 개요
 
-**프로젝트명**: mcp-public-data  
-**워크스페이스 경로**: `/Users/ethan/Cursor/mcp-public-data`  
-**목표**: MCP(Model Context Protocol) Java SDK를 사용한 "Hello World" 응답 서버 구성  
-**최종 커밋**: `[MCP/250810] mcp java sdk 서버 1차 구성`
+공공데이터포털 API를 활용하는 MCP (Model Context Protocol) 서버로, AI 도구와 공공데이터 간의 연결 역할을 수행합니다. Java 21과 MCP Java SDK를 사용하여 구현되었습니다.
+
+### 주요 기능
+- **MCP 프로토콜 지원**: Model Context Protocol 표준 준수
+- **Hello World 도구**: 사용자 이름을 받아서 인사 메시지를 반환
+- **STDIO 통신**: 표준 입출력을 통한 MCP 프로토콜 통신
+- **Docker 지원**: 컨테이너 기반 배포 지원
+
+## ✅ 완료된 작업
+
+### Phase 0: 기본 구조 (100% 완료)
+- ✅ **MCP Java SDK 기반 서버 구현**: PublicDataMCPServer.java
+- ✅ **Hello World 도구 구현**: 사용자 인사 메시지 반환
+- ✅ **STDIO 전송 프로토콜**: 표준 입출력 통신 구현
+- ✅ **JSON-RPC 2.0 프로토콜**: MCP 표준 프로토콜 지원
+- ✅ **Docker 컨테이너 지원**: 컨테이너 기반 실행 환경
+- ✅ **환경변수 설정 가이드**: 보안 환경변수 관리 체계
+- ✅ **프로젝트 문서화**: README.md 및 기술 문서 완성
+- ✅ **문서 구조 최적화**: docs/ 디렉토리 체계적 정리
+- ✅ **프로젝트 이름 변경**: `mcp-public-data` → `public-data-mcp-server`
+- ✅ **워크스페이스 통합**: 전역 설정과 연동 완료
+
+### 기술 문서 완성
+- ✅ **환경변수 설정**: `docs/security/security-environment-variables.md`
+- ✅ **프로토콜 비교**: `docs/protocols/protocol-comparison-json-jsonrpc.md`
+- ✅ **요구사항 문서**: `docs/development/requirements-and-roadmap.md`
+- ✅ **실행 계획**: `docs/development/development-execution-plan.md`
+- ✅ **아키텍처 문서**: `docs/architecture/project-architecture-and-design.md`
+- ✅ **다이어그램**: `docs/diagrams/` 하위 시각화 자료
+
+## 🚀 앞으로 진행할 작업
+
+### Phase 1: 공공데이터 API 연동 (1-2주)
+- [ ] **공공데이터포털 API 클라이언트 구현**
+  - HTTP 클라이언트 설정 (WebClient 또는 RestTemplate)
+  - API 키 관리 및 인증 처리
+  - 기본 API 호출 테스트
+- [ ] **기본 도구 구현**
+  - 공공데이터 검색 도구 (`public_data_search`)
+  - 데이터 목록 조회 도구 (`public_data_list`)
+  - 상세 정보 조회 도구 (`public_data_detail`)
+- [ ] **에러 처리**
+  - API 호출 실패 시 에러 처리
+  - 사용자 친화적 에러 메시지 생성
+  - 로깅 시스템 구축
+
+### Phase 2: 고급 기능 (2-3주)
+- [ ] **데이터 캐싱**
+  - Redis 캐싱 시스템 구현
+  - 캐시 TTL 설정
+  - 캐시 무효화 전략
+- [ ] **도구 확장**
+  - 날씨 정보 도구 (`weather_info`)
+  - 교통 정보 도구 (`traffic_info`)
+  - 부동산 정보 도구 (`real_estate_info`)
+- [ ] **성능 최적화**
+  - 응답 시간 최적화
+  - 메모리 사용량 최적화
+  - 동시 요청 처리 개선
+
+### Phase 3: 운영 준비 (1주)
+- [ ] **모니터링**
+  - 애플리케이션 로깅 개선
+  - 성능 메트릭 수집
+  - 헬스 체크 엔드포인트
+- [ ] **배포 자동화**
+  - Docker 이미지 최적화
+  - CI/CD 파이프라인 구축
+  - 자동 테스트 실행
+- [ ] **문서화**
+  - API 문서 작성
+  - 사용자 가이드 작성
+  - 트러블슈팅 가이드
+
+## 📊 현재 상태
+
+### 기술 스택
+- **Java**: 21
+- **Gradle**: 8.8
+- **MCP Java SDK**: 0.11.1
+- **Docker**: 컨테이너 지원
+
+### 프로젝트 구조
+```
+public-data-mcp-server/
+├── src/main/java/com/datapublic/mcp/
+│   ├── PublicDataMCPServer.java    # 메인 서버 클래스
+│   ├── controller/
+│   │   └── MCPServerController.java # MCP 컨트롤러
+│   └── service/
+│       └── HelloService.java       # Hello World 서비스
+├── docs/                           # 기술 문서
+│   ├── development/                # 개발 관련 문서
+│   ├── architecture/               # 아키텍처 문서
+│   ├── security/                   # 보안 관련 문서
+│   ├── protocols/                  # 프로토콜 관련 문서
+│   └── diagrams/                   # 다이어그램 및 시각화
+├── build.gradle                    # Gradle 빌드 설정
+├── gradle.properties               # Gradle 속성
+├── run-build-gradle.sh            # 실행 스크립트
+└── README.md                       # 프로젝트 설명
+```
+
+### 성능 지표
+- **현재 응답 시간**: < 100ms (Hello World 도구)
+- **메모리 사용량**: ~50MB (기본 MCP 서버)
+- **동시 요청 처리**: 단일 요청 처리
+
+### 목표 성능
+- **응답 시간**: < 1초 (공공데이터 API 호출 포함)
+- **동시 요청**: 10개 동시 요청 처리
+- **메모리 사용량**: < 512MB
 
 ## ⚙️ 전역 설정 참조
+
 이 프로젝트는 워크스페이스 루트의 전역 설정을 사용합니다:
-- **전역 Cursor AI 규칙**: `/Users/ethan/Cursor/.cursorrules`
-- **전역 MCP 설정**: `/Users/ethan/Cursor/mcp.json`
+- **전역 Cursor AI 규칙**: `/Users/ethan/Cursor/.cursor/.cursorrules`
+- **전역 MCP 설정**: `/Users/ethan/Cursor/.cursor/mcp.json`
+- **전역 프로젝트 개요**: `/Users/ethan/Cursor/cursor-workspace/PROJECTS.md`
 
 ## 🛠️ 기술 스택
 
-- **Java**: 21 (SDKMAN으로 관리)
-- **빌드 도구**: Gradle 8.8
-- **MCP SDK**: 공식 MCP Java SDK (`io.modelcontextprotocol.sdk:mcp:0.11.1`)
-- **패키지**: `com.datapublic.mcp`
-- **메인 클래스**: `PublicDataMCPServer.java`
+### 현재 사용 중
+- **Java**: 21
+- **Gradle**: 8.8
+- **MCP Java SDK**: 0.11.1
+- **Docker**: 컨테이너 지원
+
+### 추가 예정
+- **Spring WebClient**: HTTP 클라이언트
+- **Redis**: 캐싱 시스템
+- **Jackson**: JSON 처리
+- **SLF4J + Logback**: 로깅
 
 ## 📁 프로젝트 구조
 
+### 핵심 클래스
+- **PublicDataMCPServer.java**: MCP 서버의 메인 클래스
+  - STDIO 전송 프로바이더 설정
+  - MCP 서버 초기화 및 도구 등록
+  - 서버 실행 및 종료 처리
+- **MCPServerController.java**: MCP 프로토콜 컨트롤러
+  - 도구 등록 및 관리
+  - 요청 라우팅 처리
+  - 응답 포맷팅
+- **HelloService.java**: Hello World 도구 구현
+  - 도구 로직 처리
+  - 응답 생성
+  - 에러 처리
+
+### 향후 확장 계획
 ```
-mcp-public-data/
-├── build.gradle                 # Gradle 빌드 설정
-├── gradle.properties           # Gradle 프로퍼티 (Java 21 경로 설정)
-├── settings.gradle             # Gradle 프로젝트 설정
-├── gradle/wrapper/             # Gradle Wrapper 파일들
-├── src/main/java/com/datapublic/mcp/
-│   └── PublicDataMCPServer.java # MCP 서버 메인 클래스
-├── run-build-gradle.sh         # 빌드 및 실행 스크립트
-├── run-github-mcp.sh           # GitHub MCP 실행 스크립트
-├── README.md                   # 프로젝트 문서
-├── CONTEXT.md                  # 프로젝트 컨텍스트 문서
-└── env/                        # 환경 변수 디렉토리
-    ├── .secrets.env           # GitHub MCP API 키 (실제 값)
-    └── .secrets.env.example   # GitHub MCP API 키 템플릿
+com.datapublic.mcp/
+├── PublicDataMCPServer.java
+├── controller/
+│   └── MCPServerController.java
+├── service/
+│   ├── HelloService.java
+│   ├── PublicDataService.java          # 공공데이터 API 서비스
+│   └── WeatherService.java             # 날씨 정보 서비스
+├── client/                             # 외부 API 클라이언트
+│   ├── PublicDataApiClient.java        # 공공데이터 API 클라이언트
+│   └── WeatherApiClient.java           # 날씨 API 클라이언트
+├── dto/                                # 데이터 전송 객체
+├── config/                             # 설정 클래스
+└── util/                               # 유틸리티
 ```
 
 ## 🔄 개발 과정
 
-### 1단계: 초기 설정
-- **워크스페이스**: `/Users/ethan/Cursor/mcp-public-data` 지정
-- **빌드 도구**: Maven → Gradle로 변경
-- **Java 버전**: 21 설정 (SDKMAN 사용)
+### 현재 워크플로우
+1. **요구사항 분석**: 공공데이터 API 스펙 분석
+2. **MCP 도구 설계**: JSON 스키마 작성
+3. **구현**: API 클라이언트 및 MCP 도구 구현
+4. **테스트**: 로컬 환경 및 Docker 환경 테스트
+5. **문서화**: 코드 주석 및 README 업데이트
 
-### 2단계: MCP SDK 선택 과정
-1. **Spring AI MCP** (초기 시도) → 정식 릴리스되지 않음으로 폐기
-2. **codeboyzhou/mcp-declarative-java-sdk** (중간 시도) → 사용자 요청으로 폐기
-3. **공식 MCP Java SDK** (최종 선택) → `io.modelcontextprotocol.sdk:mcp:0.11.1`
+### 새로운 도구 추가 방법
+1. **Service 클래스 생성**: `service/NewToolService.java`
+2. **도구 스펙 정의**: JSON 스키마 작성
+3. **컨트롤러에 등록**: `MCPServerController`에 도구 추가
+4. **테스트 작성**: 단위 테스트 및 통합 테스트
 
-### 3단계: 패키지명 변경
-- **초기**: `com.data.public.mcp` → Java 키워드 `public` 충돌
-- **최종**: `com.datapublic.mcp`
+## 🔗 관련 프로젝트
 
-### 4단계: 빌드 설정 최적화
-- **Fat JAR 생성**: 런타임 의존성 포함
-- **Gradle Wrapper**: 8.8 버전으로 업데이트
-- **Java Home**: SDKMAN 경로 설정 (`/Users/ethan/.sdkman/candidates/java/current`)
+- **[spring-boot-mcp-integration](../spring-boot-mcp-integration/)**: Spring Boot 백엔드 서버
+- **[vue-mcp-integration](../vue-mcp-integration/)**: Vue.js 프론트엔드 클라이언트
 
-## 💻 핵심 구현 내용
+## 📝 업데이트 히스토리
 
-### PublicDataMCPServer.java
-```java
-package com.datapublic.mcp;
-
-import io.modelcontextprotocol.server.McpServer;
-import io.modelcontextprotocol.server.McpServerFeatures.SyncToolSpecification;
-import io.modelcontextprotocol.server.McpSyncServer;
-import io.modelcontextprotocol.server.transport.StdioServerTransportProvider;
-import io.modelcontextprotocol.spec.McpSchema.ServerCapabilities;
-import io.modelcontextprotocol.spec.McpSchema.Tool;
-import io.modelcontextprotocol.spec.McpSchema.CallToolResult;
-
-public class PublicDataMCPServer {
-    public static void main(String[] args) {
-        // STDIO 전송 프로바이더 생성
-        StdioServerTransportProvider transportProvider = new StdioServerTransportProvider(new ObjectMapper());
-        
-        // MCP 서버 생성
-        McpSyncServer server = McpServer.sync(transportProvider)
-                .serverInfo("public-data-mcp-server", "1.0.0")
-                .capabilities(ServerCapabilities.builder()
-                        .tools(true)
-                        .build())
-                .build();
-        
-        // Hello World 도구 추가
-        var helloWorldTool = getHelloWorldToolSpecification();
-        server.addTool(helloWorldTool);
-        
-        // 서버 실행
-        try {
-            Thread.currentThread().join();
-        } catch (InterruptedException e) {
-            System.out.println("서버가 종료되었습니다.");
-        }
-    }
-    
-    private static SyncToolSpecification getHelloWorldToolSpecification() {
-        String schema = """
-                {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "description": "인사할 이름 (기본값: World)"
-                    }
-                  }
-                }
-                """;
-        
-        return new SyncToolSpecification(
-                new Tool("hello_world", "간단한 Hello World 메시지를 반환합니다.", schema),
-                (exchange, arguments) -> {
-                    String name = (String) arguments.getOrDefault("name", "World");
-                    String message = "안녕하세요, " + name + "! Java 21과 Gradle로 만든 Public Data MCP 서버입니다! 🎉";
-                    return new CallToolResult(message, true);
-                }
-        );
-    }
-}
-```
-
-### build.gradle (핵심 설정)
-```gradle
-plugins {
-    id 'java'
-    id 'application'
-}
-
-group = 'com.datapublic'
-version = '1.0.0'
-sourceCompatibility = '21'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'io.modelcontextprotocol.sdk:mcp:0.11.1'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
-}
-
-application {
-    mainClass = 'com.datapublic.mcp.PublicDataMCPServer'
-}
-
-jar {
-    manifest {
-        attributes 'Main-Class': 'com.datapublic.mcp.PublicDataMCPServer'
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-```
-
-## 🚀 실행 방법
-
-### 1. 빌드 및 실행
-```bash
-./run-build-gradle.sh
-```
-
-### 2. MCP 도구 테스트
-```bash
-# 도구 목록 조회
-echo '{"jsonrpc": "2.0", "id": 1, "method": "tools/list"}' | java -jar build/libs/mcp-public-data-1.0.0.jar
-
-# Hello World 도구 호출
-echo '{"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": {"name": "hello_world", "arguments": {"name": "사용자"}}}' | java -jar build/libs/mcp-public-data-1.0.0.jar
-```
-
-### 3. GitHub MCP 서버 연동
-```bash
-# GitHub MCP 서버 실행
-./run-github-mcp.sh
-```
-
-## 🔗 GitHub MCP 서버 연동
-
-### 구성 파일
-
-#### mcp.json
-```json
-{
-  "mcpServers": {
-    "github": {
-      "command": "/Users/ethan/Cursor/mcp-public-data/run-github-mcp.sh"
-    }
-  }
-}
-```
-
-#### run-github-mcp.sh
-```bash
-#!/bin/bash
-
-# GitHub MCP 서버 실행 스크립트
-# 작업 디렉토리로 이동
-cd /Users/ethan/Cursor/mcp-public-data
-
-# 환경 변수 파일 로드
-set -a
-source ./env/.secrets.env
-set +a
-
-# Docker 컨테이너에서 GitHub MCP 서버 실행
-docker exec -i \
-  -e GITHUB_MCP_KEY \
-  -e GITHUB_MCP_PROFILE \
-  node24bg \
-  npx -y @smithery/cli@latest \
-  run @smithery-ai/github \
-  --key "$GITHUB_MCP_KEY" \
-  --profile "$GITHUB_MCP_PROFILE"
-```
-
-#### env/.secrets.env
-```bash
-GITHUB_MCP_KEY=<실제_GITHUB_MCP_KEY>
-GITHUB_MCP_PROFILE=<실제_GITHUB_MCP_PROFILE>
-```
-
-### GitHub MCP 서버 특징
-- **Docker 기반**: `node24bg` 컨테이너에서 실행
-- **Smithery CLI**: `@smithery/cli@latest` 사용
-- **GitHub 통합**: `@smithery-ai/github` 패키지 사용
-- **환경 변수**: API 키와 프로필을 환경 변수로 관리
-- **보안**: `.secrets.env` 파일로 민감한 정보 분리
-
-### GitHub MCP 서버 기능
-- GitHub 저장소 검색 및 조회
-- 이슈 및 PR 관리
-- 코드 검색 및 파일 조회
-- 커밋 히스토리 조회
-- 브랜치 및 태그 관리
-
-## 📡 JSON vs JSON-RPC 응답 차이점
-
-### 일반 JSON 응답
-```json
-{
-  "message": "안녕하세요, 사용자! Java 21과 Gradle로 만든 Public Data MCP 서버입니다! 🎉",
-  "timestamp": "2024-01-15T20:17:32.435",
-  "java_version": "21.0.7",
-  "status": "success"
-}
-```
-
-### MCP JSON-RPC 응답
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 2,
-  "result": {
-    "content": [
-      {
-        "type": "text",
-        "text": "안녕하세요, 사용자! Java 21과 Gradle로 만든 Public Data MCP 서버입니다! 🎉"
-      }
-    ]
-  }
-}
-```
-
-## 🔧 해결된 문제들
-
-### 1. Java 키워드 충돌
-- **문제**: `package com.data.public.mcp`에서 `public` 키워드 충돌
-- **해결**: `package com.datapublic.mcp`로 변경
-
-### 2. MCP SDK 의존성 문제
-- **문제**: Spring AI MCP가 정식 릴리스되지 않음
-- **해결**: 공식 MCP Java SDK 사용
-
-### 3. Fat JAR 생성 문제
-- **문제**: `NoClassDefFoundError` 발생
-- **해결**: `build.gradle`에서 런타임 의존성 포함 설정
-
-### 4. Gradle Java Home 설정
-- **문제**: 환경변수 `$HOME` 확장 안됨
-- **해결**: 절대 경로 `/Users/ethan/.sdkman/candidates/java/current` 사용
-
-## 📚 문서화 완료
-
-### README.md 주요 섹션
-1. **프로젝트 소개** - MCP Java SDK 기반 서버 설명
-2. **기술 스택** - Java 21, Gradle, Docker 배지 포함
-3. **빌드 및 실행** - 상세한 단계별 가이드
-4. **프로젝트 구조** - 파일 및 디렉토리 설명
-5. **구현 내용** - MCP 서버 구현 상세 설명
-6. **테스트 결과** - JSON-RPC 응답 예시
-7. **JSON vs JSON-RPC** - 응답 형식 차이점 비교
-
-## 🎯 현재 상태
-
-### ✅ 완료된 작업
-- [x] MCP Java SDK 서버 1차 구성
-- [x] Gradle 빌드 시스템 설정
-- [x] Java 21 환경 구성
-- [x] Hello World 도구 구현
-- [x] JSON-RPC 응답 생성
-- [x] Fat JAR 빌드 설정
-- [x] 실행 스크립트 작성
-- [x] GitHub MCP 서버 연동 구성
-- [x] 환경 변수 보안 설정
-- [x] README.md 문서화
-- [x] Git 커밋 및 푸시
-
-### 🔄 다음 단계 가능성
-- [ ] 공공데이터포털 API 연동
-- [ ] 추가 MCP 도구 구현
-- [ ] 에러 처리 강화
-- [ ] 로깅 시스템 추가
-- [ ] Docker 컨테이너화
-- [ ] CI/CD 파이프라인 구성
-
-## 📝 Git 히스토리
-
-### 최종 커밋
-```
-[MCP/250810] mcp java sdk 서버 1차 구성
-
-+ MCP 공식 홈페이지 권장 java sdk 사용
-+ json-rpc 응답 생성
-+ 구현 내용 README 작성
-+ build, github mcp 실행 스크립트 작성
-```
-
-### 커밋 통계
-- **커밋 해시**: `a2e9a22`
-- **변경된 파일**: 13개
-- **추가된 라인**: 818줄
-- **삭제된 라인**: 33줄
-
-## 🔗 관련 링크
-
-- **공식 MCP Java SDK**: https://github.com/modelcontextprotocol/java-sdk
-- **GitHub 저장소**: https://github.com/constant94-dev/mcp-public-data
-- **MCP 프로토콜**: https://modelcontextprotocol.io/
+### 2025-08-17
+- ✅ **기본 MCP 서버 구현 완료**: Hello World 도구 정상 작동
+- ✅ **문서화 체계 구축**: 기술 문서 체계적 정리 및 최신화
+- ✅ **환경변수 관리**: 보안 환경변수 설정 가이드 완성
+- ✅ **프로젝트 구조 최적화**: 파일명 및 디렉토리 구조 개선
+- ✅ **다이어그램 최신화**: 현재 구현 상태 반영
+- ✅ **프로젝트 이름 변경**: 가독성 향상을 위한 이름 변경
+- ✅ **워크스페이스 통합**: 전역 설정과 완전 연동
 
 ---
 
-**마지막 업데이트**: 2024-01-15  
+**마지막 업데이트**: 2025-08-17  
 **작성자**: Ethan  
-**상태**: 1차 구성 완료 ✅
+**상태**: 기본 MCP 서버 구현 완료 ✅ (공공데이터 API 연동 준비됨)
