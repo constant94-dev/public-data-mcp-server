@@ -1,6 +1,7 @@
 package com.datapublic.mcp.controller;
 
 import com.datapublic.mcp.service.HelloService;
+import com.datapublic.mcp.service.SpringBootIntegrationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.modelcontextprotocol.server.McpServer;
 import io.modelcontextprotocol.server.McpServerFeatures;
@@ -28,7 +29,12 @@ public class MCPServerController {
             );
             // 3) 서비스에서 도구 규격 수집 후 등록
             List<McpServerFeatures.SyncToolSpecification> tools = List.of(
-                    HelloService.helloWorldTool() // 여기에 다른 서비스 도구들도 추가
+                    HelloService.helloWorldTool(), // Hello World 도구
+                    SpringBootIntegrationService.springBootHealthCheckTool(), // Spring Boot 헬스 체크
+                    SpringBootIntegrationService.getUserInfoTool(), // 사용자 정보 조회
+                    SpringBootIntegrationService.getSessionInfoTool(), // 세션 정보 조회
+                    SpringBootIntegrationService.getPublicDataInfoTool(), // 공공데이터 정보 조회
+                    SpringBootIntegrationService.createLogTool() // 로그 기록 생성
             );
             registerTools(server, tools);
 
